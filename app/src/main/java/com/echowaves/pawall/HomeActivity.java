@@ -2,6 +2,8 @@ package com.echowaves.pawall;
 
 import android.os.Bundle;
 
+import com.echowaves.pawall.core.PAWActivity;
+
 
 public class HomeActivity extends PAWActivity {
 

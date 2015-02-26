@@ -9,7 +9,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name=".PAWApplication">
+        android:name=".core.PAWApplication">
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_name" >

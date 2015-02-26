@@ -1,4 +1,4 @@
-package com.echowaves.pawall;
+package com.echowaves.pawall.core;
 
 import android.app.Application;
 
@@ -10,9 +10,17 @@ import com.parse.Parse;
  *
  */
 public class PAWApplication extends Application implements PAWConstants {
+    private static PAWApplication singleton;
+
+    public PAWApplication getInstance(){
+        return singleton;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        singleton = this;
+
         // init Flurry
         FlurryAgent.init(this, FLURRY_API_KEY);
 

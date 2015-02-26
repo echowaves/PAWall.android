@@ -1,4 +1,4 @@
-package com.echowaves.pawall;
+package com.echowaves.pawall.core;
 
 import android.app.Activity;
 

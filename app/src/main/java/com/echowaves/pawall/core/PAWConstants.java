@@ -1,4 +1,4 @@
-package com.echowaves.pawall;
+package com.echowaves.pawall.core;
 
 /**
  * Created by dmitry on 2/25/15.
