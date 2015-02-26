@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">PAWall</string>
 
+    <color name="pawColor">#CCFF33</color>
+
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>
