@@ -7,4 +7,8 @@ package com.echowaves.pawall;
 public interface PAWConstants {
 //    FLURRY_API_KEY = "" ;
 
+    public static final String PARSE_APP_ID = "9pCHhmNRhIJjSDACxNVJoE5gRs2jD7DIu04hRdOI" ; // dev
+
+    public static final String PARSE_CLIENT_ID = "4wwq4Rw3JDprIs0ZlRqeQNd02zRAGnD0mogyxDW2" ;// dev
+
 }

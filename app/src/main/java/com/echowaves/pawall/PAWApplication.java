@@ -14,5 +14,10 @@ public class PAWApplication extends Application implements PAWConstants {
         super.onCreate();
         // init Flurry
         FlurryAgent.init(this, FLURRY_API_KEY);
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, PARSE_APP_ID, PARSE_CLIENT_ID);
+
     }
 }
