@@ -3,6 +3,7 @@ package com.echowaves.pawall;
 import android.app.Application;
 
 import com.flurry.android.FlurryAgent;
+import com.parse.Parse;
 
 /**
  * Created by dmitry on 2/25/15.
