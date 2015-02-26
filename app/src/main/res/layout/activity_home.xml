@@ -11,37 +11,35 @@
         android:orientation="vertical">
 
         <!-- Action Bar -->
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/abs__action_bar_default_height"
             android:background="@color/pawColor">
 
-
-            <ImageView
+            <ImageButton
                 android:id="@+id/nav_tuneOut"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="2dp"
-                android:background="@color/ewColor"
-                android:paddingBottom="10dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:src="@drawable/back" />
+                android:layout_margin="5dp"
+                android:layout_padding="5dp"
+                android:background="@drawable/ic_search_black_48dp"
+                android:backgroundTint="@android:color/holo_blue_dark" />
 
             <ImageButton
                 android:id="@+id/nav_takePictureButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
-                android:background="@android:drawable/ic_menu_camera"
-                android:padding="5dp" />
+                android:layout_padding="5dp"
+                android:background="@drawable/ic_add_circle_outline_black_48dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                 />
 
-            <Button
+            <TextView
                 android:id="@+id/nav_waveAllNowButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,14 +49,17 @@
                 android:background="@drawable/rounded_button_red"
                 android:minWidth="100dp"
                 android:padding="5dp"
-                android:text="Wave: 0"
-                android:textColor="@android:color/white"
+                android:text="PAWall"
+                android:textColor="@android:color/black"
                 android:textSize="20dp" />
+
         </RelativeLayout>
     </LinearLayout>
 
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <TextView
+        android:text="@string/hello_world"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
