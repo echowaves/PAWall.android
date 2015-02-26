@@ -3,62 +3,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:baselineAligned="false"
+    android:clickable="true"
+    android:theme="@style/Base.TextAppearance.AppCompat">
 
-    <LinearLayout
+
+    <!-- Action Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:background="@color/pawColor">
 
-        <!-- Action Bar -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/abs__action_bar_default_height"
-            android:background="@color/pawColor">
+        <ImageButton
+            android:id="@+id/home_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@android:drawable/ic_menu_search"
+            android:backgroundTint="@android:color/holo_blue_dark" />
 
-            <ImageButton
-                android:id="@+id/nav_tuneOut"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                android:background="@drawable/ic_search_black_48dp"
-                android:backgroundTint="@android:color/holo_blue_dark" />
+        <ImageButton
+            android:id="@+id/home_addPost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@android:drawable/ic_menu_add"
+            android:backgroundTint="@android:color/holo_blue_dark" />
 
-            <ImageButton
-                android:id="@+id/nav_takePictureButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                android:background="@drawable/ic_add_circle_outline_black_48dp"
-                android:backgroundTint="@android:color/holo_blue_dark"
-                 />
-
-            <TextView
-                android:id="@+id/nav_waveAllNowButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_margin="5dp"
-                android:minWidth="100dp"
-                android:padding="5dp"
-                android:text="PAWall"
-                android:textColor="@android:color/black"
-                android:textSize="20dp" />
-
-        </RelativeLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:minWidth="100dp"
+            android:padding="5dp"
+            android:text="PAWall"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+    </RelativeLayout>
 
 
     <TextView
-        android:text="@string/hello_world"
+        android:text='Search for #hash_tags in Posts near you\n Typical search may look like:\n "snowblower"\n  or \n "laundry"'
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_text_green"
+        android:gravity="center"
+        android:layout_gravity="left" />
+
+    <TextView
+        android:text="PAWall is a Geo Location Ads engine \nbacked by smart phone technology,\n versus Classified Ads\n  which were born during newspaper\n publishing era."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_text_grey"
+        android:gravity="center"
+        android:layout_gravity="center"
+         />
+
+    <TextView
+        android:text="Create new Posts\n  Typical Post may say things like: \n&quot;Will sell a used #snowblower for $150 &quot; \nOr\n &quot;Need my #Laundry done&quot;"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_text_green"
+        android:gravity="center"
+        android:layout_gravity="right"
+         />
 
 </LinearLayout>
