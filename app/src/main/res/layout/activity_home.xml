@@ -6,7 +6,7 @@
     tools:context=".HomeActivity"
     android:baselineAligned="false"
     android:clickable="true"
-    android:theme="@style/Base.TextAppearance.AppCompat">
+    >
 
 
     <!-- Action Bar -->
@@ -16,7 +16,7 @@
         android:background="@color/pawColor">
 
         <ImageButton
-            android:id="@+id/home_search"
+            android:id="@+id/home_searchButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
@@ -27,7 +27,7 @@
             android:backgroundTint="@android:color/holo_blue_dark" />
 
         <ImageButton
-            android:id="@+id/home_addPost"
+            android:id="@+id/home_createPostButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"

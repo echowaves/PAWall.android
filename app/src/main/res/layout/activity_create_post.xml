@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreatePostActivity"
+    android:baselineAligned="false"
+    android:clickable="true">
+
+
+    <!-- Action Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:background="@color/pawColor">
+
+        <ImageButton
+            android:id="@+id/createPost_backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:backgroundTint="@android:color/holo_blue_dark" />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/home_addPost"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:background="@android:drawable/ic_menu_add"-->
+            <!--android:backgroundTint="@android:color/holo_blue_dark" />-->
+
+        <TextView
+            android:id="@+id/createPost_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:minWidth="100dp"
+            android:padding="5dp"
+            android:text="My New Post"
+            android:textColor="@android:color/black"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>
