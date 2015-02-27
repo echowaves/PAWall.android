@@ -11,4 +11,6 @@ public interface PAWConstants {
 
     public static final String PARSE_CLIENT_ID = "4wwq4Rw3JDprIs0ZlRqeQNd02zRAGnD0mogyxDW2" ;// dev
 
+    public static final String UUID_KEY = "uuid";
+
 }
