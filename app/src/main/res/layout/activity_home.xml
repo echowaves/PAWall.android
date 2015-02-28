@@ -17,24 +17,24 @@
 
         <ImageButton
             android:id="@+id/home_searchButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="@android:drawable/ic_menu_search"
+            android:background="@mipmap/ic_search_black_48dp"
             android:backgroundTint="@android:color/holo_blue_dark" />
 
         <ImageButton
             android:id="@+id/home_createPostButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="@android:drawable/ic_menu_add"
+            android:background="@mipmap/ic_add_circle_outline_black_48dp"
             android:backgroundTint="@android:color/holo_blue_dark" />
 
         <TextView

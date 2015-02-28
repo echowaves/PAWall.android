@@ -16,13 +16,13 @@
 
         <ImageButton
             android:id="@+id/createPost_backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="@mipmap/ic_close_black_48dp"
             android:backgroundTint="@android:color/holo_blue_dark" />
 
         <!--<ImageButton-->
