@@ -119,7 +119,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:background="@mipmap/ic_search_black_48dp"
+                    android:background="@mipmap/ic_search_black_36dp"
                     android:colorBackground="@color/pawColor"
                     android:tag="tab0"
                     android:text="Search" />
@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:background="@mipmap/ic_bookmark_black_48dp"
+                    android:background="@mipmap/ic_bookmark_black_36dp"
                     android:colorBackground="@color/pawColor"
                     android:tag="tab1"
                     android:text="Bookmarks" />
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:background="@mipmap/ic_notifications_black_48dp"
+                    android:background="@mipmap/ic_notifications_black_36dp"
                     android:colorBackground="@color/pawColor"
                     android:tag="tab2"
                     android:text="Alerts" />
