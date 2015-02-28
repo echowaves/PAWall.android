@@ -2,6 +2,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+    <!--<style name="AppTheme" parent="android:Theme.Material.NoActionBar">-->
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 

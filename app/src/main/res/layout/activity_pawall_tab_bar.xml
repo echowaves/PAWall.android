@@ -1,0 +1,149 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.echowaves.pawall.PAWallTabBarActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:background="@color/ewColor">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/nav_textViewNotification"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:background="@color/ewColor"-->
+        <!--android:text="@string/tuneIn"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="14sp" />-->
+        <!--</RelativeLayout>-->
+
+        <!-- Action Bar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abs__action_bar_default_height"
+            android:background="@color/pawColor">
+
+            <ImageButton
+                android:id="@+id/tabBar_backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:background="@android:drawable/ic_menu_close_clear_cancel"
+                android:backgroundTint="@android:color/holo_blue_dark" />
+
+            <!--<ImageButton-->
+            <!--android:id="@+id/home_addPost"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_margin="5dp"-->
+            <!--android:padding="5dp"-->
+            <!--android:background="@android:drawable/ic_menu_add"-->
+            <!--android:backgroundTint="@android:color/holo_blue_dark" />-->
+
+            <TextView
+                android:id="@+id/tabBar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:minWidth="100dp"
+                android:padding="5dp"
+                android:text="..."
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/nav_tabhost"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <fragment
+                    android:id="@+id/fragment_searchPosts"
+                    android:name="com.echowaves.pawall.SearchPostsTabFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/fragment_search_posts_tab" />
+
+                <fragment
+                    android:id="@+id/fragment_bookmarks"
+                    android:name="com.echowaves.pawall.BookmarsTabFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/fragment_bookmars_tab" />
+
+                <fragment
+                    android:id="@+id/fragment_alerts"
+                    android:name="com.echowaves.pawall.AlertsTabFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@layout/fragment_alerts_tab" />
+
+            </FrameLayout>
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@mipmap/ic_search_black_48dp"
+                    android:colorBackground="@color/pawColor"
+                    android:tag="tab0"
+                    android:text="Search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@mipmap/ic_bookmark_black_48dp"
+                    android:colorBackground="@color/pawColor"
+                    android:tag="tab1"
+                    android:text="Bookmarks" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@mipmap/ic_alarm_black_48dp"
+                    android:colorBackground="@color/pawColor"
+                    android:tag="tab2"
+                    android:text="Alerts" />
+
+            </TabWidget>
+
+        </RelativeLayout>
+    </TabHost>
+
+</LinearLayout>

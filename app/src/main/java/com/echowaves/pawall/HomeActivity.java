@@ -25,12 +25,12 @@ public class HomeActivity extends PAWActivity {
 
         searchButton = (ImageButton) findViewById(R.id.home_searchButton);
         //Listening to button event
-//        createPostButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View arg0) {
-//                Intent createWave = new Intent(ApplicationContextProvider.getContext(), SignUpActivity.class);
-//                startActivity(createWave);
-//            }
-//        });
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent navTabBarIntent = new Intent(PAWApplication.getInstance(), PAWallTabBarActivity.class);
+                startActivity(navTabBarIntent);
+            }
+        });
 
 
         createPostButton = (ImageButton) findViewById(R.id.home_createPostButton);
