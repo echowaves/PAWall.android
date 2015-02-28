@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
     <!--<style name="AppTheme" parent="android:Theme.Material.NoActionBar">-->
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
     </style>
 
 </resources>

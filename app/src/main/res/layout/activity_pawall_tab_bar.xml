@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:background="@mipmap/ic_alarm_black_48dp"
+                    android:background="@mipmap/ic_notifications_black_48dp"
                     android:colorBackground="@color/pawColor"
                     android:tag="tab2"
                     android:text="Alerts" />

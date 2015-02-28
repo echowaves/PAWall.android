@@ -15,8 +15,14 @@ import com.echowaves.pawall.core.PAWFragmentActivity;
 public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost.OnTabChangeListener {
 
     static int currentTab;
+
+    private TextView titleTextView;
+
+    @SuppressWarnings("unused")
     private SearchPostsTabFragment searchPostsFragment;
+    @SuppressWarnings("unused")
     private BookmarsTabFragment bookmarksFragment;
+    @SuppressWarnings("unused")
     private AlertsTabFragment alertsTabFragment;
 
     private TabHost tabHost;
@@ -27,6 +33,9 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pawall_tab_bar);
+
+        titleTextView = (TextView) findViewById(R.id.tabBar_title);
+        titleTextView.setText("Posts Near You");
 
         backButton = (ImageButton) findViewById(R.id.tabBar_backButton);
         //Listening to button event
@@ -58,7 +67,7 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
         // Create the tabspec based on the textview childs in the xml file.
         // Or create simple tabspec instances in any other way...
         for (int index = 0; index < originalTextViews.length; index++) {
-            Log.d("~~~~~~~~~~~~~~~~~~~~~ Loading tab", String.valueOf(index));
+            Log.d("~~~~~~~~~~ Loading tab", String.valueOf(index));
             final TextView tabWidgetTextView = originalTextViews[index];
             final View tabContentView = tabContent.getChildAt(index);
             TabHost.TabSpec tabSpec = tabHost.newTabSpec((String) tabWidgetTextView.getTag());
@@ -78,28 +87,6 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
 
         tabHost.setOnTabChangedListener(this);
 
-//        // tune out button
-//        ImageView backButton = (ImageView) findViewById(R.id.nav_tuneOut);
-//        //Listening to button event
-//        tuneOutButton.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(final View v) {
-//
-//                EWWave.tuneOut(new EWJsonHttpResponseHandler(v.getContext()) {
-//
-//                    @Override
-//                    public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-//                        Log.d(">>>>>>>>>>>>>>>>>>>> ", jsonResponse.toString());
-//
-//                        Intent home = new Intent(getApplicationContext(), HomeActivity.class);
-//                        startActivity(home);
-//                    }
-//
-//                });
-//
-//            }
-//        });
-
 
         searchPostsFragment = (SearchPostsTabFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_searchPosts);
@@ -113,8 +100,21 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
 
     @Override
     public void onTabChanged(String tabId) {
-        Log.d("PAWallTabBarActivity ==========================================: ", "onTabChanged(): tabId=" + tabId.substring(3));
+        Log.d("PAWallTabBarActivity", "onTabChanged(): tabId=" + tabId.substring(3));
         currentTab = Integer.parseInt(tabId.substring(3));
+        switch (currentTab) {
+            case 0:
+                titleTextView.setText("Posts Near You");
+                break;
+            case 1:
+                titleTextView.setText("My Bookmarks");
+                break;
+            case 2:
+                titleTextView.setText("My Alerts");
+                break;
+            default:
+                titleTextView.setText("...");
+        }
     }
 
 }
