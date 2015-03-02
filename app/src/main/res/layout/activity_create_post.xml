@@ -76,19 +76,19 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/createPost_body"
+                android:id="@+id/createPost_bodyText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="New Text"
-                android:layout_weight="1"
                 android:padding="5dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_edit_text"
-                android:layout_toStartOf="@+id/createPost_sendButton"
-                android:gravity="top" />
+                android:layout_toStartOf="@+id/createPost_createPostButton"
+                android:scrollbars="vertical"
+                android:gravity="top"
+                />
 
             <ImageButton
-                android:id="@+id/createPost_sendButton"
+                android:id="@+id/createPost_createPostButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@mipmap/ic_send_black_48dp"
