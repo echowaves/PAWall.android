@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.location.Criteria;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +12,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.echowaves.pawall.core.PAWActivity;
+import com.echowaves.pawall.core.PAWApplication;
+import com.echowaves.pawall.model.GPost;
+import com.echowaves.pawall.model.PAWModelCallback;
 import com.parse.LocationCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
@@ -43,8 +47,14 @@ public class CreatePostActivity extends PAWActivity {
         bodyText.setEnabled(false);
 
         locationLable = (TextView) findViewById(R.id.createPost_locationLable);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_LOW);
+        criteria.setAltitudeRequired(false);
+        criteria.setBearingRequired(false);
+        criteria.setCostAllowed(true);
+        criteria.setPowerRequirement(Criteria.POWER_LOW);
 
-        ParseGeoPoint.getCurrentLocationInBackground(10000, new LocationCallback() {
+        ParseGeoPoint.getCurrentLocationInBackground(10000, criteria, new LocationCallback() {
             @Override
             public void done(ParseGeoPoint geoPoint, ParseException e) {
                 if (e == null) {
@@ -92,6 +102,8 @@ public class CreatePostActivity extends PAWActivity {
                             .setCancelable(false)
                             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+
+
                                 }
                             });
                     // create alert dialog
@@ -112,7 +124,36 @@ public class CreatePostActivity extends PAWActivity {
                             })
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
+
+                                    GPost.createPost(
+                                            bodyText.getText().toString(),
+                                            currentLocation,
+                                            PAWApplication.getInstance().getUUID(),
+                                            new PAWModelCallback() {
+                                                @Override
+                                                public void done(ParseException e) {
+                                                    if(e == null) {
+                                                        finish();
+                                                    } else {
+                                                        AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
+                                                        alertDialogConfirmWaveDeletion.setTitle("Error");
+
+                                                        // set dialog message
+                                                        alertDialogConfirmWaveDeletion
+                                                                .setMessage("Unable to post. Try again.")
+                                                                .setCancelable(false)
+                                                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                    public void onClick(DialogInterface dialog, int id) {
+                                                                    }
+                                                                });
+                                                        // create alert dialog
+                                                        AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                                                        // show it
+                                                        alertDialog.show();
+                                                    }
+                                                }
+                                            }
+                                    );
                                 }
                             });
                     // create alert dialog

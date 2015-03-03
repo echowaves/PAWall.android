@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.echowaves.pawall.model.BaseDataModel;
 import com.flurry.android.FlurryAgent;
 import com.parse.Parse;
 
@@ -17,7 +18,7 @@ import com.parse.Parse;
 public class PAWApplication extends Application implements PAWConstants {
 
     private static PAWApplication instance;
-    public static Context getInstance() {
+    public static PAWApplication getInstance() {
         if(instance == null) {
             instance = new PAWApplication();
         }
@@ -47,9 +48,8 @@ public class PAWApplication extends Application implements PAWConstants {
 
 
     public String getUUID() {
-        SharedPreferences prefs = new SecurePreferences(this);
 
-        String uuid = prefs.getString(UUID_KEY, "");
+        String uuid = BaseDataModel.getStoredCredential();
 
         if(uuid.equals("")) {
             Log.d("PAWApplication", "uuid = blank");
@@ -62,7 +62,7 @@ public class PAWApplication extends Application implements PAWConstants {
                 Log.d("PAWApplication", "uuid = Secure.ANDROID_ID");
             }
 
-            prefs.edit().putString(UUID_KEY, uuid).commit();
+            BaseDataModel.storeCredentials(uuid);
         }
         return uuid;
     }
