@@ -85,7 +85,7 @@
                 android:layout_toStartOf="@+id/createPost_createPostButton"
                 android:scrollbars="vertical"
                 android:gravity="top"
-                />
+                android:textSize="17sp" />
 
             <ImageButton
                 android:id="@+id/createPost_createPostButton"
