@@ -67,7 +67,6 @@ public class CreatePostActivity extends PAWActivity {
             public void onClick(View arg0) {
                 String text = bodyText.getText().toString();
                 if (text.length() < 10) {
-
                     AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
                     alertDialogConfirmWaveDeletion.setTitle("Warning");
 
@@ -83,9 +82,44 @@ public class CreatePostActivity extends PAWActivity {
                     AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
                     // show it
                     alertDialog.show();
-                    return;
+                } else if (!text.contains("#")) {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
+                    alertDialogConfirmWaveDeletion.setTitle("Warning");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("You post can not be saved without any #hash_tags. You post will not be searchable unless it has #hash_tags. Add some #has_tags and try again.")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
+                } else {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
+//                    alertDialogConfirmWaveDeletion.setTitle("Warning");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("You Post will be saved now.")
+                            .setCancelable(true)
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            })
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
                 }
-                finish();
             }
         });
 
