@@ -7,23 +7,24 @@ import com.parse.SaveCallback;
 
 /**
  * Created by dmitry on 3/2/15.
+ *
  */
 public class GPost extends BaseDataModel {
-    private static String CLASS_NAME = "GPosts";
-    private static String POSTED_BY = "postedBy";//uuid
-    private static String BODY = "body";
-    private static String WORDS = "words";
-    private static String HASH_TAGS = "hashtags";
-    private static String LOCATION = "location";
-    private static String ACTIVE = "active";
-    private static String REPLIES = "replies";
+    final static String CLASS_NAME = "GPosts";
+    final static String POSTED_BY = "postedBy";//uuid
+    final static String BODY = "body";
+    final static String WORDS = "words";
+    final static String HASH_TAGS = "hashtags";
+    final static String LOCATION = "location";
+    final static String ACTIVE = "active";
+    final static String REPLIES = "replies";
 
     public static void createPost(
             String body,
-            ParseGeoPoint location,
+            final ParseGeoPoint location,
             String postedBy,
             final PAWModelCallback callback) {
-        ParseObject postObject = new ParseObject(CLASS_NAME);
+        final ParseObject postObject = new ParseObject(CLASS_NAME);
 
         postObject.put(BODY, body);
         postObject.put(LOCATION, location);
@@ -36,8 +37,8 @@ public class GPost extends BaseDataModel {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-//                    GAlert.createAlertForMyPost(postObject)
-//                    GAlert.createAlertsForMatchingBookmarks(postObject, location:location)
+                    GAlert.createAlertForMyPost(postObject);
+                    GAlert.createAlertsForMatchingBookmarks(postObject, location);
                 }
                 callback.done(e);
             }
