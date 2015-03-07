@@ -26,10 +26,11 @@
         </activity>
         <activity
             android:name=".CreatePostActivity"
-            android:label="@string/title_activity_create_post"/>
+            android:label="@string/title_activity_create_post" />
         <activity
             android:name=".PAWallTabBarActivity"
-            android:label="@string/title_activity_pawall_tab_bar"/>
+            android:label="@string/title_activity_pawall_tab_bar">
+        </activity>
     </application>
 
 </manifest>

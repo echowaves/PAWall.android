@@ -131,26 +131,27 @@ public class CreatePostActivity extends PAWActivity {
                                             PAWApplication.getInstance().getUUID(),
                                             new PAWModelCallback() {
                                                 @Override
-                                                public void done(ParseException e) {
-                                                    if(e == null) {
-                                                        finish();
-                                                    } else {
-                                                        AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
-                                                        alertDialogConfirmWaveDeletion.setTitle("Error");
+                                                public void succeeded(Object result) {
+                                                }
 
-                                                        // set dialog message
-                                                        alertDialogConfirmWaveDeletion
-                                                                .setMessage("Unable to post. Try again.")
-                                                                .setCancelable(false)
-                                                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                                                    public void onClick(DialogInterface dialog, int id) {
-                                                                    }
-                                                                });
-                                                        // create alert dialog
-                                                        AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
-                                                        // show it
-                                                        alertDialog.show();
-                                                    }
+                                                @Override
+                                                public void failed(com.parse.ParseException  e) {
+                                                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(CreatePostActivity.this);
+                                                    alertDialogConfirmWaveDeletion.setTitle("Error");
+
+                                                    // set dialog message
+                                                    alertDialogConfirmWaveDeletion
+                                                            .setMessage("Unable to post. Try again.")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                }
+                                                            });
+                                                    // create alert dialog
+                                                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                                                    // show it
+                                                    alertDialog.show();
+                                                    finish();
                                                 }
                                             }
                                     );

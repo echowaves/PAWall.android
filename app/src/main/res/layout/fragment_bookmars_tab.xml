@@ -1,9 +1,35 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.echowaves.pawall.BookmarsTabFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.echowaves.pawall.BookmarsTabFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="bookmarks tab" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/pawColor">
+
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookmarks_searchView"
+            android:background="@color/pawColor"
+            android:queryHint="Search for bookmarks"
+            android:layout_alignParentStart="true" />
+        <ListView
+            android:id="@+id/bookmarks_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:transcriptMode="alwaysScroll"
+            android:cacheColorHint="#00000000"
+            android:background="@android:color/white"
+            android:listSelector="@android:color/transparent"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/bookmarks_searchView" />
+
+    </RelativeLayout>
 
 </FrameLayout>
