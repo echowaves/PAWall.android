@@ -23,6 +23,7 @@ import com.echowaves.pawall.model.GPost;
 import com.echowaves.pawall.model.PAWModelCallback;
 import com.parse.ParseObject;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -187,12 +188,15 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                 holder.postBody = (EditText) view.findViewById(R.id.row_searchPostsTab_postBody);
 
 
-                double cost = (1.0 / (postsNearMe.get(position).getInt(GPost.REPLIES)+ 1));
+                ParseObject post = postsNearMe.get(position);
+                double cost = (1.0 / (post.getInt(GPost.REPLIES)+ 1));
 
                 holder.replies.setText("$" + Utility.round(cost, 2) + " to reply");
-                holder.postedAt.setText("234");
-                holder.distance.setText("345");
-                holder.postBody.setText("456");
+                holder.postedAt.setText(new SimpleDateFormat("MM-dd-yyyy").format(post.getCreatedAt()));
+                double roundedDistance = Utility.round(post.getParseGeoPoint(GPost.LOCATION).distanceInMilesTo(PAWApplication.getInstance().getCurrentLocation()), 2);
+
+                holder.distance.setText(roundedDistance + " miles");
+                holder.postBody.setText(post.getString(GPost.BODY));
 
                 // the setTag is used to store the data within this view
                 view.setTag(holder);
