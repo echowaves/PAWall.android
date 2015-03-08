@@ -98,6 +98,7 @@ public class CreatePostActivity extends PAWActivity {
                                             new PAWModelCallback() {
                                                 @Override
                                                 public void succeeded(Object result) {
+                                                    finish();
                                                 }
 
                                                 @Override

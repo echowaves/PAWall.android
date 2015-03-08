@@ -186,10 +186,13 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                 holder.distance = (TextView) view.findViewById(R.id.row_searchPostsTab_distance);
                 holder.postBody = (EditText) view.findViewById(R.id.row_searchPostsTab_postBody);
 
-                holder.replies.setText(postsNearMe.get(position).getString(GPost.REPLIES));
-                holder.postedAt.setText("");
-                holder.distance.setText("");
-                holder.postBody.setText("");
+
+                double cost = (1.0 / (postsNearMe.get(position).getInt(GPost.REPLIES)+ 1));
+
+                holder.replies.setText("$" + Utility.round(cost, 2) + " to reply");
+                holder.postedAt.setText("234");
+                holder.distance.setText("345");
+                holder.postBody.setText("456");
 
                 // the setTag is used to store the data within this view
                 view.setTag(holder);
