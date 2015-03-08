@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.echowaves.pawall.core.PAWApplication;
 import com.echowaves.pawall.core.PAWTabFragment;
 import com.echowaves.pawall.core.Utility;
+import com.echowaves.pawall.model.GBookmark;
 import com.echowaves.pawall.model.GPost;
 import com.echowaves.pawall.model.PAWModelCallback;
 import com.parse.ParseObject;
@@ -36,7 +38,7 @@ public class SearchPostsTabFragment extends PAWTabFragment {
     private List<ParseObject> postsNearMe;
     private SearchView searchView;
     private ListView listView;
-//    private ImageButton bookmarkImageButton;
+    private ImageButton bookmarkImageButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -155,6 +157,53 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                     }
                 }
         );
+
+
+        bookmarkImageButton = (ImageButton) view.findViewById(R.id.searchPosts_bookmarkButton);
+        bookmarkImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(searchView.getQuery().length() <= 0) {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(getActivity());
+                    alertDialogConfirmWaveDeletion.setTitle("Warning");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("Can't save empty bookmark. Try again.")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
+                } else {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(getActivity());
+//                    alertDialogConfirmWaveDeletion.setTitle("Warning");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("Your search will be bookmarked. You will be Alerted about new posts matching your bookmark.")
+                            .setCancelable(true)
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            })
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    GBookmark.createBookmark(searchView.getQuery().toString());
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
+
+                }
+            }
+        });
 
         return view;
     }
