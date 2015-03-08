@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.location.Criteria;
 import android.os.Bundle;
 import android.util.Log;
@@ -186,6 +187,8 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                 holder.postedAt = (TextView) view.findViewById(R.id.row_searchPostsTab_postedAt);
                 holder.distance = (TextView) view.findViewById(R.id.row_searchPostsTab_distance);
                 holder.postBody = (EditText) view.findViewById(R.id.row_searchPostsTab_postBody);
+                Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/AmericanTypewriter.ttc");
+                holder.postBody.setTypeface(font);
 
 
                 ParseObject post = postsNearMe.get(position);
