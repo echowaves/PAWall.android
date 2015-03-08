@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
-import android.location.Criteria;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,9 +33,9 @@ import java.util.List;
  */
 public class SearchPostsTabFragment extends PAWTabFragment {
 
+    static SearchView searchView;
     private View view;
     private List<ParseObject> postsNearMe;
-    private SearchView searchView;
     private ListView listView;
     private ImageButton bookmarkImageButton;
 
@@ -65,9 +64,9 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                         query,
                         300,
                         new PAWModelCallback() {
+                            @SuppressWarnings("unchecked")
                             @Override
                             public void succeeded(Object results) {
-//                                    @SuppressWarnings("unchecked")
                                 postsNearMe = (List<ParseObject>) results;
                                 Log.d("SearchPostsTabFragment", postsNearMe.size() + " posts near me found");
 
@@ -99,7 +98,10 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                             }
                         }
                 );
-                searchView.clearFocus();
+                searchView.setFocusable(true);
+                searchView.setIconified(false);
+                searchView.requestFocusFromTouch();
+                searchView.requestFocus();
                 return true;
             }
 
@@ -117,6 +119,7 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                 "",
                 1000,
                 new PAWModelCallback() {
+                    @SuppressWarnings("unchecked")
                     @Override
                     public void succeeded(Object results) {
 //                                    @SuppressWarnings("unchecked")
@@ -156,7 +159,7 @@ public class SearchPostsTabFragment extends PAWTabFragment {
         bookmarkImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(searchView.getQuery().length() <= 0) {
+                if (searchView.getQuery().length() <= 0) {
                     AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(getActivity());
                     alertDialogConfirmWaveDeletion.setTitle("Warning");
 
@@ -287,7 +290,7 @@ public class SearchPostsTabFragment extends PAWTabFragment {
 
 
                 ParseObject post = postsNearMe.get(position);
-                double cost = (1.0 / (post.getInt(GPost.REPLIES)+ 1));
+                double cost = (1.0 / (post.getInt(GPost.REPLIES) + 1));
 
                 holder.replies.setText("$" + Utility.round(cost, 2) + " to reply");
                 holder.postedAt.setText(new SimpleDateFormat("MM-dd-yyyy").format(post.getCreatedAt()));
@@ -298,10 +301,11 @@ public class SearchPostsTabFragment extends PAWTabFragment {
 
                 // the setTag is used to store the data within this view
                 view.setTag(holder);
-            } else {
-                // the getTag returns the viewHolder object set as a tag to the view
-                holder = (ViewHolder) view.getTag();
             }
+//            else {
+//                // the getTag returns the viewHolder object set as a tag to the view
+////                holder = (ViewHolder) view.getTag();
+//            }
 
 
             view.setOnClickListener(new View.OnClickListener() {

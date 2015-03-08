@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.echowaves.pawall.core.PAWApplication;
@@ -28,7 +30,7 @@ import java.util.List;
 
 /**
  */
-public class BookmarsTabFragment extends PAWTabFragment {
+public class BookmarksTabFragment extends PAWTabFragment {
 
     private View view;
 
@@ -57,6 +59,7 @@ public class BookmarsTabFragment extends PAWTabFragment {
         GBookmark.findMyBookmarks(
                 PAWApplication.getInstance().getUUID(),
                 new PAWModelCallback() {
+                    @SuppressWarnings("unchecked")
                     @Override
                     public void succeeded(Object results) {
 //                                    @SuppressWarnings("unchecked")
@@ -152,6 +155,7 @@ public class BookmarsTabFragment extends PAWTabFragment {
 
             // create a ViewHolder reference
             ViewHolder holder;
+            final ParseObject bookmark = myBookmarks.get(position);
 
             //check to see if the reused view is null or not, if is not null then reuse it
             if (view == null) {
@@ -166,7 +170,6 @@ public class BookmarsTabFragment extends PAWTabFragment {
                 holder.bookmark.setTypeface(font);
 
 
-                final ParseObject bookmark = myBookmarks.get(position);
 
                 holder.bookmark.setText(bookmark.getString(GBookmark.SEARCH_TEXT));
                 holder.postedAt.setText(new SimpleDateFormat("MM-dd-yyyy").format(bookmark.getCreatedAt()));
@@ -206,10 +209,29 @@ public class BookmarsTabFragment extends PAWTabFragment {
 
                 // the setTag is used to store the data within this view
                 view.setTag(holder);
-            } else {
-                // the getTag returns the viewHolder object set as a tag to the view
-                holder = (ViewHolder) view.getTag();
             }
+// else {
+//                // the getTag returns the viewHolder object set as a tag to the view
+////                holder = (ViewHolder) view.getTag();
+//            }
+
+
+            view.setOnClickListener(new View.OnClickListener() {
+                public void onClick(final View v) {
+                    Log.d("BookmarksTabFragment", "clicked on a row");
+
+
+
+                    TabHost host = (TabHost) getActivity().findViewById(R.id.nav_tabhost);
+                    host.setCurrentTab(0);
+                    SearchPostsTabFragment.searchView.setQuery(bookmark.getString(GBookmark.SEARCH_TEXT), true);
+                    SearchPostsTabFragment.searchView.setFocusable(true);
+                    SearchPostsTabFragment.searchView.setIconified(false);
+                    SearchPostsTabFragment.searchView.requestFocusFromTouch();
+
+                }
+            });
+
 
             //this method must return the view corresponding to the data at the specified position.
             return view;

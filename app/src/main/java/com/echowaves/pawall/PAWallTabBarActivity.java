@@ -21,7 +21,7 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
     @SuppressWarnings("unused")
     private SearchPostsTabFragment searchPostsFragment;
     @SuppressWarnings("unused")
-    private BookmarsTabFragment bookmarksFragment;
+    private BookmarksTabFragment bookmarksFragment;
     @SuppressWarnings("unused")
     private AlertsTabFragment alertsTabFragment;
 
@@ -90,7 +90,7 @@ public class PAWallTabBarActivity extends PAWFragmentActivity implements TabHost
 
         searchPostsFragment = (SearchPostsTabFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_searchPosts);
-        bookmarksFragment = (BookmarsTabFragment) getFragmentManager()
+        bookmarksFragment = (BookmarksTabFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_bookmarks);
         alertsTabFragment = (AlertsTabFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_alerts);

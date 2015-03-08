@@ -96,7 +96,7 @@
 
                 <fragment
                     android:id="@+id/fragment_bookmarks"
-                    android:name="com.echowaves.pawall.BookmarsTabFragment"
+                    android:name="com.echowaves.pawall.BookmarksTabFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/fragment_bookmars_tab" />
