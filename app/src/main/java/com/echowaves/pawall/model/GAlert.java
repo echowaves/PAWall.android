@@ -17,13 +17,13 @@ import java.util.List;
  * Created by dmitry on 3/4/15.
  */
 public class GAlert extends BaseDataModel {
-    final static String CLASS_NAME = "GAlerts";
-    final static String PARENT_POST = "parentPost";
-    final static String PARENT_CONVERSATION = "parentConversation"; // only the alert that has paren conversation can be replied to
-    final static String TARGET = "target"; //uuid
-    final static String ALERT_BODY = "alertBody";
-    final static String POST_BODY = "postBody";
-    final static String MESSAGE_BODY = "messageBody";
+    final public static String CLASS_NAME = "GAlerts";
+    final public static String PARENT_POST = "parentPost";
+    final public static String PARENT_CONVERSATION = "parentConversation"; // only the alert that has paren conversation can be replied to
+    final public static String TARGET = "target"; //uuid
+    final public static String ALERT_BODY = "alertBody";
+    final public static String POST_BODY = "postBody";
+    final public static String MESSAGE_BODY = "messageBody";
 
     public static void createOrUpdateAlert(
 //        parentPost: PFObject,

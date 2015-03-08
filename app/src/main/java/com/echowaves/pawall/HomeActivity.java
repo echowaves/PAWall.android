@@ -1,5 +1,7 @@
 package com.echowaves.pawall;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +29,27 @@ public class HomeActivity extends PAWActivity {
         //Listening to button event
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent navTabBarIntent = new Intent(PAWApplication.getInstance(), PAWallTabBarActivity.class);
-                startActivity(navTabBarIntent);
+                if(PAWApplication.getInstance().getCurrentLocation() == null) {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(HomeActivity.this);
+                    alertDialogConfirmWaveDeletion.setTitle("Error");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("Enable GPS, or wait few seconds for location to be detected and try again.")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
+
+                } else {
+                    Intent navTabBarIntent = new Intent(PAWApplication.getInstance(), PAWallTabBarActivity.class);
+                    startActivity(navTabBarIntent);
+                }
             }
         });
 
@@ -37,8 +58,27 @@ public class HomeActivity extends PAWActivity {
         //Listening to button event
         createPostButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent createPostIntent = new Intent(PAWApplication.getInstance(), CreatePostActivity.class);
-                startActivity(createPostIntent);
+                if(PAWApplication.getInstance().getCurrentLocation() == null) {
+                    AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(HomeActivity.this);
+                    alertDialogConfirmWaveDeletion.setTitle("Error");
+
+                    // set dialog message
+                    alertDialogConfirmWaveDeletion
+                            .setMessage("Enable GPS, or wait few seconds for location to be detected and try again.")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                }
+                            });
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                    // show it
+                    alertDialog.show();
+
+                } else {
+                    Intent createPostIntent = new Intent(PAWApplication.getInstance(), CreatePostActivity.class);
+                    startActivity(createPostIntent);
+                }
             }
         });
 

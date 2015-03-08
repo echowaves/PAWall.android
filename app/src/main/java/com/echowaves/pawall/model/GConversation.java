@@ -16,12 +16,12 @@ import java.util.List;
  *
  */
 public class GConversation extends BaseDataModel {
-    final static String CLASS_NAME = "GConversations";
-    final static String PARENT_POST = "parentPost";
-    final static String PARTICIPANTS = "participants"; //array of uuid's
-    final static String CHARGES_APPLIED = "chargesApplied";
-    final static String MESSAGES_COUNT = "messagesCount";
-    final static String LOCATION = "location";
+    final public static String CLASS_NAME = "GConversations";
+    final public static String PARENT_POST = "parentPost";
+    final public static String PARTICIPANTS = "participants"; //array of uuid's
+    final public static String CHARGES_APPLIED = "chargesApplied";
+    final public static String MESSAGES_COUNT = "messagesCount";
+    final public static String LOCATION = "location";
 
     public static ParseObject createConversation(final ParseObject myPost,
                                                  final ParseGeoPoint myLocation,

@@ -1,32 +1,36 @@
 package com.echowaves.pawall.core;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.location.Criteria;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.echowaves.pawall.model.BaseDataModel;
 import com.flurry.android.FlurryAgent;
+import com.parse.LocationCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 
 /**
  * Created by dmitry on 2/25/15.
- *
  */
 public class PAWApplication extends Application implements PAWConstants {
 
     private static PAWApplication instance;
-    public static PAWApplication getInstance() {
-        if(instance == null) {
-            instance = new PAWApplication();
-        }
-        return instance;
-    }
+    private ParseGeoPoint currentLocation;
 
     public PAWApplication() {
         instance = this;
+
+    }
+
+    public static PAWApplication getInstance() {
+        if (instance == null) {
+            instance = new PAWApplication();
+        }
+        return instance;
     }
 
     @Override
@@ -41,9 +45,8 @@ public class PAWApplication extends Application implements PAWConstants {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, PARSE_APP_ID, PARSE_CLIENT_ID);
 
-
         Log.d("PAWApplication", getUUID());
-
+        getCurrentLocation();
     }
 
 
@@ -51,7 +54,7 @@ public class PAWApplication extends Application implements PAWConstants {
 
         String uuid = BaseDataModel.getStoredCredential();
 
-        if(uuid.equals("")) {
+        if (uuid.equals("")) {
             Log.d("PAWApplication", "uuid = blank");
             TelephonyManager mTelephony = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             if (mTelephony.getDeviceId() != null) {
@@ -65,6 +68,31 @@ public class PAWApplication extends Application implements PAWConstants {
             BaseDataModel.storeCredentials(uuid);
         }
         return uuid;
+    }
+
+    public ParseGeoPoint getCurrentLocation() {
+        if (currentLocation == null) {
+            Criteria criteria = new Criteria();
+            criteria.setAccuracy(Criteria.ACCURACY_LOW);
+            criteria.setAltitudeRequired(false);
+            criteria.setBearingRequired(false);
+            criteria.setCostAllowed(true);
+            criteria.setPowerRequirement(Criteria.POWER_LOW);
+
+            ParseGeoPoint.getCurrentLocationInBackground(10000, criteria, new LocationCallback() {
+                @Override
+                public void done(ParseGeoPoint geoPoint, ParseException e) {
+                    if (e == null) {
+                        // We were able to get the location
+                        currentLocation = geoPoint;
+                    } else {
+                        // handle your error
+                    }
+                }
+            });
+
+        }
+        return currentLocation;
     }
 
 }

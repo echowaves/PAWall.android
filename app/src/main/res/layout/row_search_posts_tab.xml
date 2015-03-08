@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/row_searchPostsTab">
+
+    <TextView
+        android:id="@+id/row_searchPostsTab_replies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Replies:"
+        android:textSize="12sp"
+        android:layout_alignBottom="@+id/row_searchPostsTab_postedAt"
+        android:layout_alignStart="@+id/row_searchPostsTab_postBody"
+        android:layout_toStartOf="@+id/row_searchPostsTab_postedAt" />
+
+    <TextView
+        android:id="@+id/row_searchPostsTab_postedAt"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Posted:"
+        android:textSize="17sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/row_searchPostsTab_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance:"
+        android:textSize="12sp"
+        android:layout_alignTop="@+id/row_searchPostsTab_replies"
+        android:layout_alignEnd="@+id/row_searchPostsTab_postBody"
+        android:layout_toEndOf="@+id/row_searchPostsTab_postedAt" />
+
+
+    <EditText
+        android:id="@+id/row_searchPostsTab_postBody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:gravity="top"
+        android:textSize="17sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/row_searchPostsTab_replies"
+        android:layout_alignBottom="@+id/row_searchPostsTab_details" />
+
+    <ImageButton
+        android:id="@+id/row_searchPostsTab_details"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@mipmap/ic_chevron_right_black_48dp"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/row_searchPostsTab_distance"
+        android:layout_alignEnd="@+id/row_searchPostsTab_distance" />
+
+
+</RelativeLayout>

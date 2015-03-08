@@ -9,11 +9,11 @@ import com.parse.ParseObject;
  *
  */
 public class GMessage extends BaseDataModel {
-    final static String CLASS_NAME = "GMessages";
-    final static String PARENT_CONVERSATION = "parentConversation";
-    final static String REPLIED_BY = "repliedBy";//uuid
-    final static String BODY = "body";
-    final static String LOCATION = "location";
+    final public static String CLASS_NAME = "GMessages";
+    final public static String PARENT_CONVERSATION = "parentConversation";
+    final public static String REPLIED_BY = "repliedBy";//uuid
+    final public static String BODY = "body";
+    final public static String LOCATION = "location";
 
     public static void createMessage(
             ParseObject parentConversation,

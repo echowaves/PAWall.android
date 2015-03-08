@@ -18,14 +18,14 @@ import java.util.List;
  *
  */
 public class GPost extends BaseDataModel {
-    final static String CLASS_NAME = "GPosts";
-    final static String POSTED_BY = "postedBy";//uuid
-    final static String BODY = "body";
-    final static String WORDS = "words";
-    final static String HASH_TAGS = "hashtags";
-    final static String LOCATION = "location";
-    final static String ACTIVE = "active";
-    final static String REPLIES = "replies";
+    final public static String CLASS_NAME = "GPosts";
+    final public static String POSTED_BY = "postedBy";//uuid
+    final public static String BODY = "body";
+    final public static String WORDS = "words";
+    final public static String HASH_TAGS = "hashtags";
+    final public static String LOCATION = "location";
+    final public static String ACTIVE = "active";
+    final public static String REPLIES = "replies";
 
     public static void createPost(
             final String body,
