@@ -31,7 +31,7 @@ public class GAlert extends BaseDataModel {
             final String target,
             final String alertBody,
             final String chatReply) {
-        final ParseObject alert = new ParseObject(CLASS_NAME);
+        final ParseObject[] alert = {new ParseObject(CLASS_NAME)};
         ParseQuery<ParseObject> query = ParseQuery.getQuery(CLASS_NAME);
 //            query.whereKey(GALERT.PARENT_POST, equalTo: parentPost)
         query.whereEqualTo(PARENT_CONVERSATION, parentConversation);
@@ -45,10 +45,10 @@ public class GAlert extends BaseDataModel {
                     Log.d("GAlert", "Successfully retrieved " + objects.size() + " alerts");
                     if (objects.size() > 0) {
                         // update the found alert here
-                        ParseObject alert = objects.get(0);
-                        alert.put(ALERT_BODY, alertBody);
-                        alert.put(MESSAGE_BODY, chatReply);
-                        alert.saveEventually();
+                        alert[0] = objects.get(0);
+                        alert[0].put(ALERT_BODY, alertBody);
+                        alert[0].put(MESSAGE_BODY, chatReply);
+                        alert[0].saveEventually();
                     } else {
 
                         ParseObject parentPost = parentConversation.getParseObject(GConversation.PARENT_POST);
@@ -58,13 +58,13 @@ public class GAlert extends BaseDataModel {
                             Log.d("GAlert", e1.toString());
                         }
                         // create new alert here
-                        alert.put(PARENT_POST, parentPost);
-                        alert.put(PARENT_CONVERSATION, parentConversation);
-                        alert.put(TARGET, target);
-                        alert.put(ALERT_BODY, alertBody);
-                        alert.put(POST_BODY, parentPost.getString(GPost.BODY));
-                        alert.put(MESSAGE_BODY, chatReply);
-                        alert.saveEventually();
+                        alert[0].put(PARENT_POST, parentPost);
+                        alert[0].put(PARENT_CONVERSATION, parentConversation);
+                        alert[0].put(TARGET, target);
+                        alert[0].put(ALERT_BODY, alertBody);
+                        alert[0].put(POST_BODY, parentPost.getString(GPost.BODY));
+                        alert[0].put(MESSAGE_BODY, chatReply);
+                        alert[0].saveEventually();
                     }
                 } else {
                     // Log details of the failure

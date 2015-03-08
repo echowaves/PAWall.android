@@ -10,6 +10,10 @@ import com.echowaves.pawall.core.SecurePreferences;
  * Created by dmitry on 3/2/15.
  */
 public abstract class BaseDataModel implements PAWConstants {
+    final public static String CREATED_AT = "createdAt";
+    final public static String UPDATED_AT = "updatedAt";
+
+
     static final private SharedPreferences prefs = new SecurePreferences(PAWApplication.getInstance());
 
     public static void storeCredentials(String uuid) {

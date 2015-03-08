@@ -111,13 +111,6 @@ public class SearchPostsTabFragment extends PAWTabFragment {
 
         listView = (ListView) view.findViewById(R.id.searchPosts_listView);
 
-        Criteria criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_LOW);
-        criteria.setAltitudeRequired(false);
-        criteria.setBearingRequired(false);
-        criteria.setCostAllowed(true);
-        criteria.setPowerRequirement(Criteria.POWER_LOW);
-
 
         GPost.findPostNearMe(
                 PAWApplication.getInstance().getCurrentLocation(),
@@ -133,7 +126,7 @@ public class SearchPostsTabFragment extends PAWTabFragment {
                         SearchPostsAdapter defaultAdapter = new SearchPostsAdapter(getActivity(), postsNearMe);
                         listView.setAdapter(defaultAdapter);
 
-                        Utility.setListViewHeightBasedOnChildren(listView);
+//                        Utility.setListViewHeightBasedOnChildren(listView);
                     }
 
                     @Override
