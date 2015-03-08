@@ -6,23 +6,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.echowaves.pawall.core.PAWApplication;
 import com.echowaves.pawall.core.PAWTabFragment;
-import com.echowaves.pawall.core.Utility;
 import com.echowaves.pawall.model.GBookmark;
-import com.echowaves.pawall.model.GPost;
 import com.echowaves.pawall.model.PAWModelCallback;
+import com.parse.DeleteCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 
 import java.text.SimpleDateFormat;
@@ -51,6 +48,12 @@ public class BookmarsTabFragment extends PAWTabFragment {
         view = inflater.inflate(R.layout.fragment_bookmars_tab, container, false);
         listView = (ListView) view.findViewById(R.id.bookmarks_list);
 
+        loadBookmarks();
+
+        return view;
+    }
+
+    private void loadBookmarks() {
         GBookmark.findMyBookmarks(
                 PAWApplication.getInstance().getUUID(),
                 new PAWModelCallback() {
@@ -86,11 +89,7 @@ public class BookmarsTabFragment extends PAWTabFragment {
                     }
                 }
         );
-
-        return view;
     }
-
-
 
 
     @Override
@@ -149,7 +148,7 @@ public class BookmarsTabFragment extends PAWTabFragment {
 
         @Override
 
-        public View getView(int position, View view, ViewGroup viewGroup) {
+        public View getView(final int position, View view, ViewGroup viewGroup) {
 
             // create a ViewHolder reference
             ViewHolder holder;
@@ -167,7 +166,7 @@ public class BookmarsTabFragment extends PAWTabFragment {
                 holder.bookmark.setTypeface(font);
 
 
-                ParseObject bookmark = myBookmarks.get(position);
+                final ParseObject bookmark = myBookmarks.get(position);
 
                 holder.bookmark.setText(bookmark.getString(GBookmark.SEARCH_TEXT));
                 holder.postedAt.setText(new SimpleDateFormat("MM-dd-yyyy").format(bookmark.getCreatedAt()));
@@ -175,8 +174,32 @@ public class BookmarsTabFragment extends PAWTabFragment {
                 holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(getActivity());
+                        alertDialogConfirmWaveDeletion.setTitle("Warning");
 
+                        // set dialog message
+                        alertDialogConfirmWaveDeletion
+                                .setMessage("Sure want to delete bookmark?")
+                                .setCancelable(true)
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                    }
+                                })
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        bookmark.deleteInBackground(new DeleteCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                loadBookmarks();
+                                            }
+                                        });
 
+                                    }
+                                });
+                        // create alert dialog
+                        AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                        // show it
+                        alertDialog.show();
                     }
                 });
 
@@ -194,7 +217,6 @@ public class BookmarsTabFragment extends PAWTabFragment {
         }
 
     }
-
 
 
 }
