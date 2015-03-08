@@ -79,7 +79,7 @@ public class PAWApplication extends Application implements PAWConstants {
             criteria.setCostAllowed(true);
             criteria.setPowerRequirement(Criteria.POWER_LOW);
 
-            ParseGeoPoint.getCurrentLocationInBackground(10000, criteria, new LocationCallback() {
+            ParseGeoPoint.getCurrentLocationInBackground(30000, criteria, new LocationCallback() {
                 @Override
                 public void done(ParseGeoPoint geoPoint, ParseException e) {
                     if (e == null) {

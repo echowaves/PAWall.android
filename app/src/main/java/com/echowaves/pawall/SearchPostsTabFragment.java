@@ -54,6 +54,59 @@ public class SearchPostsTabFragment extends PAWTabFragment {
         view = inflater.inflate(R.layout.fragment_search_posts_tab, container, false);
 
         searchView = (SearchView) view.findViewById(R.id.searchPosts_searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                GPost.findPostNearMe(
+                        PAWApplication.getInstance().getCurrentLocation(),
+                        query,
+                        300,
+                        new PAWModelCallback() {
+                            @Override
+                            public void succeeded(Object results) {
+//                                    @SuppressWarnings("unchecked")
+                                postsNearMe = (List<ParseObject>) results;
+                                Log.d("SearchPostsTabFragment", postsNearMe.size() + " posts near me found");
+
+                                SearchPostsAdapter defaultAdapter = new SearchPostsAdapter(getActivity(), postsNearMe);
+                                listView.setAdapter(defaultAdapter);
+
+                                Utility.setListViewHeightBasedOnChildren(listView);
+
+                            }
+
+                            @Override
+                            public void failed(com.parse.ParseException e) {
+                                AlertDialog.Builder alertDialogConfirmWaveDeletion = new AlertDialog.Builder(getActivity());
+                                alertDialogConfirmWaveDeletion.setTitle("Error");
+
+                                // set dialog message
+                                alertDialogConfirmWaveDeletion
+                                        .setMessage("Unable to find posts near you. Try again.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                            }
+                                        });
+                                // create alert dialog
+                                AlertDialog alertDialog = alertDialogConfirmWaveDeletion.create();
+                                // show it
+                                alertDialog.show();
+
+                            }
+                        }
+                );
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         listView = (ListView) view.findViewById(R.id.searchPosts_listView);
 
         Criteria criteria = new Criteria();
