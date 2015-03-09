@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/row_alertsTab2">
+
+
+    <TextView
+        android:id="@+id/row_alertsTab2_postedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="createdAt:"
+        android:textSize="12sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/row_alertsTab2_postBody" />
+
+
+
+    <TextView
+        android:id="@+id/row_alertsTab2_postCreatedByMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Post created by me:"
+        android:textSize="17sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignStart="@+id/row_alertsTab2_postBody"
+        android:layout_below="@+id/row_alertsTab2_postedAt" />
+
+    <EditText
+        android:id="@+id/row_alertsTab2_postBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:padding="5dp"
+        android:gravity="top"
+        android:background="#00000000"
+        android:textSize="14sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:enabled="false"
+        android:editable="false"
+        android:layout_below="@+id/row_alertsTab2_postCreatedByMe"
+        android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:id="@+id/row_alertsTab2_activeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/row_alertsTab2_postedAt"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

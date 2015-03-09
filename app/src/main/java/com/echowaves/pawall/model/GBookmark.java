@@ -45,7 +45,7 @@ public class GBookmark extends BaseDataModel {
 
 
     public static void findMyBookmarks(
-            String createdBy,
+            final String createdBy,
             final PAWModelCallback callback) {
 
         ParseQuery<ParseObject> query = new ParseQuery<>(CLASS_NAME);

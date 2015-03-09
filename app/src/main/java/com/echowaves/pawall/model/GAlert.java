@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
  * Created by dmitry on 3/4/15.
  */
 public class GAlert extends BaseDataModel {
@@ -142,5 +141,32 @@ public class GAlert extends BaseDataModel {
             });
         }
     }
+
+
+    public static void findMyAlerts(
+            final String target,
+            final PAWModelCallback callback) {
+
+        ParseQuery<ParseObject> query = new ParseQuery<>(CLASS_NAME);
+
+        query.whereEqualTo(TARGET, target);
+        query.orderByDescending(UPDATED_AT);
+
+        // Limit what could be a lot of points.
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                if (e == null) {
+                    Log.d("GBookmark", "Successfully retrieved " + parseObjects.size() + " alerts");
+                    callback.succeeded(parseObjects);
+                } else {
+                    Log.e("GBookmark", e.toString());
+                    callback.failed(e);
+                }
+            }
+        });
+    }
+
 
 }
